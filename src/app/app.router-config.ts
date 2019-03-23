@@ -16,37 +16,28 @@ import { HomePageComponent } from './_shared/components/home-page/home-page.comp
 
 
 export const routerConfig: Routes = [
-  // basic routes
-  // login routes during
-  { path: 'login-home', component: LoginComponent },
-  {path: 'login', redirectTo: 'login-home'},
-  {path: 'home', component: HomePageComponent},
+  {
+    path: 'home', 
+    component: HomePageComponent
+  },
   {
     path: 'user-profile',
     loadChildren: './dashboards/user-dashboard/user-dashboard.module#UserDashboardModule'
   },
-
   // hr routes
-  { path: 'applicant', canActivate: [LoggedInGuard && localStorage['isApplicant']], redirectTo: 'user-view-post' },
-  // {
-  //   path: 'jobs-posted/:id',
-  //   component: HrPostdetailsComponent
-  // },
-  // {
-  //   path: 'user-view-post',
-  //   loadChildren: 'app/user-view-post/user-view-post.module#UserDashboardModule',
-  // },
-
   {
-    path: 'signin-home',
-    component: SignupHomeComponent
+    path: 'applicant',
+    canActivate: [LoggedInGuard && localStorage['isApplicant']], 
+    redirectTo: 'user-view-post' 
   },
-
   {
     path: 'signin',
-    redirectTo: 'signin-home'
+    component: SignupHomeComponent
   },
-
+  { 
+    path: 'login',
+    component: LoginComponent
+   },
   // signup routes during
   {
     path: 'signin',
@@ -64,12 +55,7 @@ export const routerConfig: Routes = [
       }
     ]
   },
-  // signup routes during
-
-
   { path: 'notif', component: NotificationComponent },
   { path: 'callback', component: CallbackComponent },
-  { path: 'forgetPassword', component: ForgetpasswordComponent },
-
-  { path: '', redirectTo: 'home', pathMatch: 'full' }
+  { path: 'forgetPassword', component: ForgetpasswordComponent }
 ];

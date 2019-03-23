@@ -45,7 +45,7 @@ export class ForgetpasswordComponent implements OnInit {
     this.forgetInfo = false;
     this._userbase.checkMailId(this.loginEmailForm.value).subscribe((res) => {
       console.log('id exists', res);
-      if (res) {
+      if (res.status) {
         this.resetInfo = true;
       } else {
         window.alert('Email address was not registered with us Please Signup with Jobnut');
